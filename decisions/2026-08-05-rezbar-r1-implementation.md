@@ -146,3 +146,11 @@ xcodegen 기본 설정만으론 테스트 번들에 Info.plist가 없어 코드�
 ## Skills used
 
 없음. (기존 하네스 규칙 — discipline 6단계, Verification Loop, decisions 기록 — 만 적용)
+
+## 검증 (Review) — 싸리, 2026-08-05, grounded 재실행
+- 재실행: 유닛테스트 `xcodebuild test` **TEST SUCCEEDED**(독립 재실행) + 열거 프로브 전 항목 PASS(132/60/72 일치)
+- 교차 대조: 스펙 케이스 5범주 전부 실 assertion으로 물림(39 테스트, XCTSkip·빈 assert·TODO 0건)
+- 추가 확인: 클린룸 grep 0건 / `pixelEncoding` 실사용 0건(주석만) / 번들 LSUIElement=true·universal·adhoc / working tree clean·트레일러 포함
+- A4(전환 프로브)는 재실행 생략 — 마이티 실화면 깜빡임(교란성) + 실행 증거 원문 보고 + 의심 트리거 4종 해당 없음(투투가 실버그를 자가 포착한 점이 green 착시 반대 신호)
+- 스펙 이견(47.95 리터럴 부동소수점 경계) 판단: 투투 처리 타당 — 의도는 실기값에서 성립, 공식 무단 수정 없이 경계를 테스트로 명시. NTSC 표기(29.97→"30 Hz")는 마이티 판단 대기
+- 판정: **게이트 통과 (loop r1/3)**, 커밋 bcc2a73
