@@ -6,9 +6,7 @@ macOS hides most of the modes your display actually supports. RezBar lists all o
 including HiDPI (Retina-scaled) modes and every refresh rate — and lets you switch with one click,
 without opening System Settings.
 
-![Menu bar screenshot](docs/screenshot.png)
-
-<!-- TODO: add docs/screenshot.png -->
+<img src="docs/screenshot.png" alt="RezBar menu showing resolutions, HiDPI modes, and refresh rate submenu" width="340">
 
 ## Features
 
