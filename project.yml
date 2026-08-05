@@ -1,0 +1,74 @@
+name: RezBar
+
+options:
+  bundleIdPrefix: com.mighty
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGNING_REQUIRED: YES
+    CODE_SIGNING_ALLOWED: YES
+    DEVELOPMENT_TEAM: ""
+    ALWAYS_SEARCH_USER_PATHS: NO
+    CLANG_ENABLE_OBJC_ARC: YES
+
+targets:
+  RezBar:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+    info:
+      path: Support/Info.plist
+      properties:
+        CFBundleName: RezBar
+        CFBundleDisplayName: RezBar
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"
+        LSUIElement: true
+        NSHumanReadableCopyright: "Copyright (c) 2026 Mighty0109. MIT Licensed."
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mighty.RezBar
+        ENABLE_HARDENED_RUNTIME: YES
+        COMBINE_HIDPI_IMAGES: YES
+
+  RezBarTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests
+    dependencies:
+      - target: RezBar
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mighty.RezBarTests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  RezBar:
+    build:
+      targets:
+        RezBar: all
+        RezBarTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: false
+      targets:
+        - RezBarTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
